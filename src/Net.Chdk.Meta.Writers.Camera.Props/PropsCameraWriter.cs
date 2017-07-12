@@ -17,6 +17,8 @@ namespace Net.Chdk.Meta.Writers.Camera.Props
             }
         }
 
+        public string Extension => ".properties";
+
         private void WriteCameras(TextWriter writer, IDictionary<string, TCamera> cameras)
         {
             foreach (var kvp in cameras)
