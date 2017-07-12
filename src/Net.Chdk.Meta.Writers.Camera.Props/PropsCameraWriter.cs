@@ -25,14 +25,16 @@ namespace Net.Chdk.Meta.Writers.Camera.Props
             }
         }
 
-        private void WriteModels(TextWriter writer, string id, TCamera camera)
+        private void WriteModels(TextWriter writer, string modelId, TCamera camera)
         {
-            foreach (var model in camera.Models)
+            var id = System.Convert.ToUInt32(modelId, 16);
+            for (var i = 0u; i < camera.Models.Length; i++)
             {
-                WriteModel(writer, id, model);
+                var model = camera.Models[i];
+                WriteModel(writer, id + i, model);
             }
         }
 
-        protected abstract void WriteModel(TextWriter writer, string id, TModel model);
+        protected abstract void WriteModel(TextWriter writer, uint id, TModel model);
     }
 }
